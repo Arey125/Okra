@@ -1,36 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Исходные файлы">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Okra">
+      <UniqueIdentifier>{B2378A7C-9E6E-8B0D-475B-71103371070F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Okra\Events">
+      <UniqueIdentifier>{560742F3-C2BC-BAE8-4BB1-B4BFB765B1EC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Okra\Platfrom">
+      <UniqueIdentifier>{A648FFE7-1209-7B1E-DB43-C49B47C3BFFA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Okra\Platfrom\Windows">
+      <UniqueIdentifier>{E0388685-4CA5-4180-1599-D9DD81C463E8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Okra\Core.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Okra.h" />
     <ClInclude Include="src\Okra\App.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Okra</Filter>
     </ClInclude>
-    <ClInclude Include="src\Okra.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="src\Okra\Core.h">
+      <Filter>Okra</Filter>
     </ClInclude>
     <ClInclude Include="src\Okra\EntryPoint.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Okra</Filter>
     </ClInclude>
+    <ClInclude Include="src\Okra\Events\AppEvent.h">
+      <Filter>Okra\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Events\Event.h">
+      <Filter>Okra\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Events\KeyEvent.h">
+      <Filter>Okra\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Events\MouseEvent.h">
+      <Filter>Okra\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Layer.h">
+      <Filter>Okra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\LayerStack.h">
+      <Filter>Okra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Log.h">
+      <Filter>Okra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Platfrom\Windows\WindowsWindow.h">
+      <Filter>Okra\Platfrom\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Window.h">
+      <Filter>Okra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\okrapch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Okra\App.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Okra</Filter>
     </ClCompile>
+    <ClCompile Include="src\Okra\Layer.cpp">
+      <Filter>Okra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Okra\LayerStack.cpp">
+      <Filter>Okra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Okra\Log.cpp">
+      <Filter>Okra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Okra\Platfrom\Windows\WindowsWindow.cpp">
+      <Filter>Okra\Platfrom\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\okrapch.cpp" />
   </ItemGroup>
 </Project>

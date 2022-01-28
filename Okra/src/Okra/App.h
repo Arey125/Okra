@@ -2,6 +2,13 @@
 
 #include "Core.h"
 
+#include "Window.h"
+#include "Okra/LayerStack.h"
+#include "Okra/Events/Event.h"
+#include "Okra/Events/AppEvent.h"
+
+#include "Window.h"
+
 namespace okra {
 
 	class OKRA_API App
@@ -11,6 +18,17 @@ namespace okra {
 		~App();
 
 		void run();
+
+		void onEvent(Event& e);
+
+		void pushLayer(Layer* layer);
+		void pushOverlay(Layer* overlay);
+	private:
+		bool onWindowClose(WindowCloseEvent& e);
+
+		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
+		LayerStack m_LayerStack;
 	};
 
 	//defined in client
