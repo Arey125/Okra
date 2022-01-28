@@ -7,8 +7,14 @@
     <Filter Include="Okra\Events">
       <UniqueIdentifier>{560742F3-C2BC-BAE8-4BB1-B4BFB765B1EC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Okra\ImGui">
+      <UniqueIdentifier>{5C2A1EF8-48E2-5F45-B1E9-38A19DC0FA35}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Okra\Platfrom">
       <UniqueIdentifier>{A648FFE7-1209-7B1E-DB43-C49B47C3BFFA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Okra\Platfrom\OpenGL">
+      <UniqueIdentifier>{1AFB0AAC-068A-9475-AFA8-A8709B16A51B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Okra\Platfrom\Windows">
       <UniqueIdentifier>{E0388685-4CA5-4180-1599-D9DD81C463E8}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Okra\Events\MouseEvent.h">
       <Filter>Okra\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Okra\ImGui\ImGuiLayer.h">
+      <Filter>Okra\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Okra\Layer.h">
       <Filter>Okra</Filter>
     </ClInclude>
@@ -46,7 +55,10 @@
     <ClInclude Include="src\Okra\Log.h">
       <Filter>Okra</Filter>
     </ClInclude>
-    <ClInclude Include="src\Okra\Platfrom\Windows\WindowsWindow.h">
+    <ClInclude Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Okra\Platfrom\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platfrom\Windows\WindowsWindow.h">
       <Filter>Okra\Platfrom\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Okra\Window.h">
@@ -58,6 +70,9 @@
     <ClCompile Include="src\Okra\App.cpp">
       <Filter>Okra</Filter>
     </ClCompile>
+    <ClCompile Include="src\Okra\ImGui\ImGuiLayer.cpp">
+      <Filter>Okra\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Okra\Layer.cpp">
       <Filter>Okra</Filter>
     </ClCompile>
@@ -67,7 +82,10 @@
     <ClCompile Include="src\Okra\Log.cpp">
       <Filter>Okra</Filter>
     </ClCompile>
-    <ClCompile Include="src\Okra\Platfrom\Windows\WindowsWindow.cpp">
+    <ClCompile Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Okra\Platfrom\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platfrom\Windows\WindowsWindow.cpp">
       <Filter>Okra\Platfrom\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\okrapch.cpp" />

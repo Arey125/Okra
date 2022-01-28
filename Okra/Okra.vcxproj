@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>okrapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OKRA_BUILD_DLL;GLFW_INCLUDE_NONE;OKRA_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <PrecompiledHeaderFile>okrapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OKRA_BUILD_DLL;GLFW_INCLUDE_NONE;OKRA_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -130,7 +130,7 @@
       <PrecompiledHeaderFile>okrapch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OKRA_BUILD_DLL;GLFW_INCLUDE_NONE;OKRA_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -156,19 +156,23 @@
     <ClInclude Include="src\Okra\Events\Event.h" />
     <ClInclude Include="src\Okra\Events\KeyEvent.h" />
     <ClInclude Include="src\Okra\Events\MouseEvent.h" />
+    <ClInclude Include="src\Okra\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Okra\Layer.h" />
     <ClInclude Include="src\Okra\LayerStack.h" />
     <ClInclude Include="src\Okra\Log.h" />
-    <ClInclude Include="src\Okra\Platfrom\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platfrom\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Okra\Window.h" />
     <ClInclude Include="src\okrapch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Okra\App.cpp" />
+    <ClCompile Include="src\Okra\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Okra\Layer.cpp" />
     <ClCompile Include="src\Okra\LayerStack.cpp" />
     <ClCompile Include="src\Okra\Log.cpp" />
-    <ClCompile Include="src\Okra\Platfrom\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platfrom\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\okrapch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -179,6 +183,9 @@
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

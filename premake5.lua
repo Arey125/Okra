@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Okra/vendor/GLFW/include"
 IncludeDir["Glad"] = "Okra/vendor/Glad/include"
+IncludeDir["ImGui"] = "Okra/vendor/imgui"
 
 include "Okra/vendor/GLFW"
 include "Okra/vendor/Glad"
+include "Okra/vendor/imgui"
 
 project "Okra"
 	location "Okra"
@@ -39,13 +41,15 @@ project "Okra"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

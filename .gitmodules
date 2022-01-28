@@ -4,3 +4,6 @@
 [submodule "Okra/vendor/GLFW"]
 	path = Okra/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Okra/vendor/imgui"]
+	path = Okra/vendor/imgui
+	url = https://github.com/TheCherno/imgui

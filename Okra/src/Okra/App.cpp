@@ -9,8 +9,13 @@ namespace okra {
 
 #define BIND_EVENT_FN(x) std::bind(&App::x, this, std::placeholders::_1)
 
+	App* App::s_Instance = nullptr;
+
 	App::App()
 	{
+		OKRA_CORE_ASSERT(s_Instance, "Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::create());
 		m_Window->setEventCallback(BIND_EVENT_FN(onEvent));
 	}
@@ -51,11 +56,14 @@ namespace okra {
 	void App::pushLayer(Layer* layer)
 	{
 		m_LayerStack.pushLayer(layer);
+		layer->onAttach();
+
 	}
 
 	void App::pushOverlay(Layer* overlay)
 	{
 		m_LayerStack.pushOverlay(overlay);
+		overlay->onAttach();
 	}
 
 	bool App::onWindowClose(WindowCloseEvent& e)

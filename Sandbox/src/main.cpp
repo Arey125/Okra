@@ -22,6 +22,7 @@ public:
 	Sandbox()
 	{
 		pushLayer(new ExampleLayer());
+		pushOverlay(new okra::ImGuiLayer());
 	}
 	~Sandbox() {}
 };

@@ -23,12 +23,17 @@ namespace okra {
 
 		void pushLayer(Layer* layer);
 		void pushOverlay(Layer* overlay);
+
+		inline static App& get() { return *s_Instance; }
+		inline Window& getWindow() { return *m_Window; }
 	private:
 		bool onWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		static App* s_Instance;
 	};
 
 	//defined in client
