@@ -8,11 +8,17 @@ public:
 
 	void onUpdate() override
 	{
-		OKRA_INFO("ExamleLayer::update");
+		if (okra::Input::isKeyPressed(OKRA_KEY_TAB))
+			OKRA_TRACE("Tab key is pressed");
 	}
+
 	void onEvent(okra::Event& event) override
 	{
-		OKRA_TRACE("{0}", event);
+		if (event.getEventType() == okra::EventType::KeyPressed)
+		{
+			okra::KeyPressedEvent& e = (okra::KeyPressedEvent&)event;
+			OKRA_TRACE("{0}", (char)e.getKeyCode());
+		}
 	}
 };
 

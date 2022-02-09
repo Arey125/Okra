@@ -58,7 +58,7 @@ namespace okra
 		m_Data.title = props.title;
 		m_Data.width = props.width;
 		m_Data.height = props.height;
-
+		
 		OKRA_CORE_INFO("Creating window {0} ({1}, {2})",
 			props.title, props.width, props.height);
 
@@ -122,6 +122,14 @@ namespace okra
 					}
 				}
 			});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int character)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(character);
+				data.eventCallback(event);
+			});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

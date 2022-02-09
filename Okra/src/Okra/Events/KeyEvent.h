@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "Event.h"
@@ -41,5 +42,16 @@ namespace okra
 		EVENT_CLASS_TO_STRING(KeyReleasedEvent, m_KeyCode)
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+	class OKRA_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+		EVENT_CLASS_TO_STRING(KeyTypedEvent, m_KeyCode)
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }

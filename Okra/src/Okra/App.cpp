@@ -5,19 +5,19 @@
 
 #include <glad/glad.h>
 
-namespace okra {
+#include "Okra/Input.h"
 
-#define BIND_EVENT_FN(x) std::bind(&App::x, this, std::placeholders::_1)
+namespace okra {
 
 	App* App::s_Instance = nullptr;
 
 	App::App()
 	{
-		OKRA_CORE_ASSERT(s_Instance, "Application already exists!");
+		OKRA_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::create());
-		m_Window->setEventCallback(BIND_EVENT_FN(onEvent));
+		m_Window->setEventCallback(BIND_EVENT_FN(App::onEvent));
 	}
 
 	App::~App()
@@ -41,8 +41,7 @@ namespace okra {
 	void App::onEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FN(onWindowClose));
-		OKRA_CORE_TRACE("{0}", e);
+		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FN(App::onWindowClose));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{

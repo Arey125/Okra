@@ -83,7 +83,7 @@
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -94,7 +94,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Okra\Okra.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Okra\Okra.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Okra\Okra.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Okra\Okra.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Okra\Okra.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -109,7 +109,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -121,7 +121,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Okra\Okra.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Okra\Okra.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Okra\Okra.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Okra\Okra.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Okra\Okra.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -133,7 +133,7 @@
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -144,7 +144,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Okra\Okra.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Okra\Okra.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Okra\Okra.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Okra\Okra.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Okra\Okra.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Okra\Okra.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -157,12 +157,16 @@
     <ClInclude Include="src\Okra\Events\KeyEvent.h" />
     <ClInclude Include="src\Okra\Events\MouseEvent.h" />
     <ClInclude Include="src\Okra\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Okra\Input.h" />
+    <ClInclude Include="src\Okra\KeyCodes.h" />
     <ClInclude Include="src\Okra\Layer.h" />
     <ClInclude Include="src\Okra\LayerStack.h" />
     <ClInclude Include="src\Okra\Log.h" />
+    <ClInclude Include="src\Okra\MouseButtonCodes.h" />
+    <ClInclude Include="src\Okra\Window.h" />
+    <ClInclude Include="src\Okra\WindowsInput.h" />
     <ClInclude Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platfrom\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\Okra\Window.h" />
     <ClInclude Include="src\okrapch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +175,7 @@
     <ClCompile Include="src\Okra\Layer.cpp" />
     <ClCompile Include="src\Okra\LayerStack.cpp" />
     <ClCompile Include="src\Okra\Log.cpp" />
+    <ClCompile Include="src\Okra\WindowsInput.cpp" />
     <ClCompile Include="src\Platfrom\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platfrom\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\okrapch.cpp">

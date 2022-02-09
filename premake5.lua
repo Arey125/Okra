@@ -1,5 +1,6 @@
 workspace "Okra"
 	architecture "x86_64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -15,14 +16,17 @@ IncludeDir["GLFW"] = "Okra/vendor/GLFW/include"
 IncludeDir["Glad"] = "Okra/vendor/Glad/include"
 IncludeDir["ImGui"] = "Okra/vendor/imgui"
 
-include "Okra/vendor/GLFW"
-include "Okra/vendor/Glad"
-include "Okra/vendor/imgui"
+group "Dependencies"
+	include "Okra/vendor/GLFW"
+	include "Okra/vendor/Glad"
+	include "Okra/vendor/imgui"
+group ""
 
 project "Okra"
 	location "Okra"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +59,6 @@ project "Okra"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -66,7 +69,7 @@ project "Okra"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
@@ -88,6 +91,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -111,20 +115,19 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 	filter "configurations:Debug"
 		defines "OKRA_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "OKRA_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "OKRA_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
