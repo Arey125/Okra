@@ -5,7 +5,7 @@
 #include "Okra/Events/MouseEvent.h"
 #include "Okra/Events/AppEvent.h"
 
-#include <glad/glad.h>
+#include "Platfrom/OpenGL/OpenGLContext.h"
 
 namespace okra
 {
@@ -35,7 +35,7 @@ namespace okra
 	void WindowsWindow::onUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->swapBuffers();
 	}
 
 	void WindowsWindow::setVSync(bool enabled)
@@ -62,6 +62,7 @@ namespace okra
 		OKRA_CORE_INFO("Creating window {0} ({1}, {2})",
 			props.title, props.width, props.height);
 
+
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
@@ -72,9 +73,10 @@ namespace okra
 
 		m_Window = glfwCreateWindow((int)props.width, (int)props.height,
 			m_Data.title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		OKRA_CORE_ASSERT(status, "Failed to initialize Glad");
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		setVSync(true);
 
@@ -162,7 +164,7 @@ namespace okra
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				MouseMovedEvent event(xPos, yPos);
+				MouseMovedEvent event((float)xPos, (float)yPos);
 				data.eventCallback(event);
 			});
 

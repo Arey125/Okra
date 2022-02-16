@@ -1,9 +1,13 @@
 #pragma once
 
-#ifdef OKRA_BUILD_DLL
-	#define OKRA_API __declspec(dllexport)
+#ifdef OKRA_DYNAMIC_LINK
+	#ifdef OKRA_BUILD_DLL
+		#define OKRA_API __declspec(dllexport)
+	#else
+		#define OKRA_API __declspec(dllimport)
+	#endif
 #else
-	#define OKRA_API __declspec(dllimport)
+	#define OKRA_API
 #endif
 
 #ifdef OKRA_DEBUG

@@ -18,6 +18,9 @@ namespace okra {
 
 		m_Window = std::unique_ptr<Window>(Window::create());
 		m_Window->setEventCallback(BIND_EVENT_FN(App::onEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		pushOverlay(m_ImGuiLayer);
 	}
 
 	App::~App()
@@ -33,6 +36,11 @@ namespace okra {
 
 			for (auto layer : m_LayerStack)
 				layer->onUpdate();
+			
+			m_ImGuiLayer->begin();
+			for (auto layer : m_LayerStack)
+				layer->onImGuiRender();
+			m_ImGuiLayer->end();
 
 			m_Window->onUpdate();
 		}

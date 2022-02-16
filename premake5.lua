@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Okra/vendor/GLFW/include"
 IncludeDir["Glad"] = "Okra/vendor/Glad/include"
 IncludeDir["ImGui"] = "Okra/vendor/imgui"
+IncludeDir["glm"] = "Okra/vendor/glm"
 
 group "Dependencies"
 	include "Okra/vendor/GLFW"
@@ -24,9 +25,10 @@ group ""
 
 project "Okra"
 	location "Okra"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,7 +39,8 @@ project "Okra"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp"
 	}
 
 	includedirs
@@ -46,7 +49,13 @@ project "Okra"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	links
@@ -58,7 +67,6 @@ project "Okra"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -67,31 +75,27 @@ project "Okra"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
-
 	filter "configurations:Debug"
 		defines "OKRA_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "OKRA_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "OKRA_DIST"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -105,7 +109,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Okra/vendor/spdlog/include",
-		"Okra/src"
+		"Okra/src",
+		"Okra/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -114,7 +120,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 	filter "configurations:Debug"
@@ -130,4 +135,4 @@ project "Sandbox"
 	filter "configurations:Dist"
 		defines "OKRA_DIST"
 		runtime "Release"
-		symbols "On"
+		optimize "On"

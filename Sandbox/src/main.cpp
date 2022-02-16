@@ -12,6 +12,13 @@ public:
 			OKRA_TRACE("Tab key is pressed");
 	}
 
+	void onImGuiRender() override
+	{
+		//ImGui::Begin("Text");
+		//ImGui::Text("Hello World");
+		//ImGui::End();
+	}
+
 	void onEvent(okra::Event& event) override
 	{
 		if (event.getEventType() == okra::EventType::KeyPressed)
@@ -28,7 +35,6 @@ public:
 	Sandbox()
 	{
 		pushLayer(new ExampleLayer());
-		pushOverlay(new okra::ImGuiLayer());
 	}
 	~Sandbox() {}
 };

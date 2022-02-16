@@ -7,7 +7,7 @@
 #include "Okra/Events/Event.h"
 #include "Okra/Events/AppEvent.h"
 
-#include "Window.h"
+#include "Okra/ImGui/ImGuiLayer.h"
 
 namespace okra {
 
@@ -30,6 +30,7 @@ namespace okra {
 		bool onWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

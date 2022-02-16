@@ -16,24 +16,11 @@ namespace okra
 
 		virtual void onAttach() override;
 		virtual void onDetach() override;
-		virtual void onUpdate() override;
-		virtual void onEvent(Event& event) override;
-
-	private:
-
-		//Mouse events
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent &e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent &e);
-		bool OnMouseMovedEvent(MouseMovedEvent &e);
-		bool OnMouseScrolledEvent(MouseScrollEvent &e);
+		virtual void onImGuiRender() override;
 		
-		//Keyboard events
-		bool onKeyPressedEvent(KeyPressedEvent&e);
-		bool onKeyReleasedEvent(KeyReleasedEvent &e);
-		bool onKeyTypedEvent(KeyTypedEvent &e);
-		
-		//App events
-		bool OnWindowResizedEvent(WindowResizeEvent &e);
+		void begin();
+		void end();
+
 
 		float m_Time = 0.f;
 	};

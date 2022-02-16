@@ -1,5 +1,6 @@
 #pragma once
 #include "Okra/Window.h"
+#include "Okra/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -28,6 +29,7 @@ namespace okra
 		virtual void shutdown();
 
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
