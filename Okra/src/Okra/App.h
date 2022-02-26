@@ -9,6 +9,9 @@
 
 #include "Okra/ImGui/ImGuiLayer.h"
 
+#include "Okra/Renderer/Shader.h"
+#include "Okra/Renderer/Buffer.h"
+
 namespace okra {
 
 	class OKRA_API App
@@ -34,6 +37,11 @@ namespace okra {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
+		//Graphics
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		static App* s_Instance;
 	};
 

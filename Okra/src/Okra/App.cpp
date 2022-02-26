@@ -21,6 +21,55 @@ namespace okra {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		pushOverlay(m_ImGuiLayer);
+
+		glGenVertexArrays(1, &m_VertexArray);
+		glBindVertexArray(m_VertexArray);
+
+		float vertices[] = {
+			-0.5, -0.5, 0.0,
+			0.5, -0.5, 0.0,
+			0.0, 0.5, 0.0,
+		};
+
+		m_VertexBuffer.reset(VertexBuffer::create(vertices, sizeof(vertices)));
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
+			3 * sizeof(float), nullptr);
+
+		unsigned int indices[] = {
+			0, 1, 2
+		};
+
+		m_IndexBuffer.reset(IndexBuffer::create(indices, sizeof(indices) / sizeof(uint32_t)));
+
+		std::string vertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string fragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4((v_Position + 1) / 2, 1.0);
+			}
+		)";
+
+		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
 	}
 
 	App::~App()
@@ -31,8 +80,12 @@ namespace okra {
 	{
 		while (m_Running)
 		{
-			glClearColor(0, 0, 1, 1);
+			glClearColor(.1, .1, .1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			m_Shader->bind();
+			glBindVertexArray(m_VertexArray);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->getCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (auto layer : m_LayerStack)
 				layer->onUpdate();

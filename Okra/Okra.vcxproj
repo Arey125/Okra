@@ -155,9 +155,13 @@
     <ClInclude Include="src\Okra\LayerStack.h" />
     <ClInclude Include="src\Okra\Log.h" />
     <ClInclude Include="src\Okra\MouseButtonCodes.h" />
+    <ClInclude Include="src\Okra\Renderer\Buffer.h" />
     <ClInclude Include="src\Okra\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Okra\Renderer\Renderer.h" />
+    <ClInclude Include="src\Okra\Renderer\Shader.h" />
     <ClInclude Include="src\Okra\Window.h" />
     <ClInclude Include="src\Okra\WindowsInput.h" />
+    <ClInclude Include="src\Platfrom\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platfrom\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platfrom\Windows\WindowsWindow.h" />
     <ClInclude Include="src\okrapch.h" />
@@ -445,7 +449,11 @@
     <ClCompile Include="src\Okra\Layer.cpp" />
     <ClCompile Include="src\Okra\LayerStack.cpp" />
     <ClCompile Include="src\Okra\Log.cpp" />
+    <ClCompile Include="src\Okra\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Okra\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Okra\Renderer\Shader.cpp" />
     <ClCompile Include="src\Okra\WindowsInput.cpp" />
+    <ClCompile Include="src\Platfrom\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platfrom\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platfrom\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\okrapch.cpp">

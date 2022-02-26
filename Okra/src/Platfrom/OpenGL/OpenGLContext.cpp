@@ -20,6 +20,11 @@ namespace okra
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		OKRA_CORE_ASSERT(status, "Failed to initialize Glad");
+
+		OKRA_CORE_INFO("OpenGL Info");
+		OKRA_CORE_INFO("Vendor: {0}", glGetString(GL_VENDOR));
+		OKRA_CORE_INFO("Renderer: {0}", glGetString(GL_RENDERER));
+		OKRA_CORE_INFO("Version: {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::swapBuffers()

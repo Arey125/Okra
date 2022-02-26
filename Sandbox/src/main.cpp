@@ -1,4 +1,5 @@
 #include <Okra.h>
+#include <imgui/imgui.h>
 
 class ExampleLayer : public okra::Layer
 {
@@ -14,9 +15,9 @@ public:
 
 	void onImGuiRender() override
 	{
-		//ImGui::Begin("Text");
-		//ImGui::Text("Hello World");
-		//ImGui::End();
+		ImGui::Begin("Text");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void onEvent(okra::Event& event) override

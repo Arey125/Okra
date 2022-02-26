@@ -13,8 +13,14 @@
     <Filter Include="src\Okra\ImGui">
       <UniqueIdentifier>{13C7242F-FF94-1835-E828-895BD495F499}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Okra\Renderer">
+      <UniqueIdentifier>{EFB8113A-5BCF-0FD0-A446-9BF1109CE057}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platfrom">
       <UniqueIdentifier>{81D602E5-6D39-9289-16BF-CA3F02015E0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platfrom\OpenGL">
+      <UniqueIdentifier>{95043FE6-0166-1CF4-8AD3-62A6F63353B3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platfrom\Windows">
       <UniqueIdentifier>{BB713B06-A700-C5CF-501F-D9CA3C8DD575}</UniqueIdentifier>
@@ -87,11 +93,29 @@
     <ClInclude Include="src\Okra\MouseButtonCodes.h">
       <Filter>src\Okra</Filter>
     </ClInclude>
+    <ClInclude Include="src\Okra\Renderer\Buffer.h">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Renderer\GraphicsContext.h">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Renderer\Renderer.h">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Okra\Renderer\Shader.h">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Okra\Window.h">
       <Filter>src\Okra</Filter>
     </ClInclude>
     <ClInclude Include="src\Okra\WindowsInput.h">
       <Filter>src\Okra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platfrom\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platfrom\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platfrom\OpenGL\OpenGLContext.h">
+      <Filter>src\Platfrom\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platfrom\Windows\WindowsWindow.h">
       <Filter>src\Platfrom\Windows</Filter>
@@ -927,8 +951,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Okra\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platfrom\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Okra\App.cpp">
@@ -949,8 +971,23 @@
     <ClCompile Include="src\Okra\Log.cpp">
       <Filter>src\Okra</Filter>
     </ClCompile>
+    <ClCompile Include="src\Okra\Renderer\Buffer.cpp">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Okra\Renderer\Renderer.cpp">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Okra\Renderer\Shader.cpp">
+      <Filter>src\Okra\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Okra\WindowsInput.cpp">
       <Filter>src\Okra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platfrom\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platfrom\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platfrom\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platfrom\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platfrom\Windows\WindowsWindow.cpp">
       <Filter>src\Platfrom\Windows</Filter>
@@ -958,6 +995,5 @@
     <ClCompile Include="src\okrapch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platfrom\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>
